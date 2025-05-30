@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=product-watcher
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - product-watcher-network
+
+
+  product-watcher-service:
+    image: product-watcher:1.0
+    container_name: product-watcher-service
+    ports:
+      - "8080:8080"
+    volumes:
+      - ~/.gradle:/home/gradle/.gradle
+    networks:
+      - product-watcher-network
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/product-watcher
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - JWT_SECRET=fmi2x04y5itER/2WCjdT5LvNqqB9jkSmEjJmWzkjkQHHrNd9aA+cutfoqE10LKFadV718C6zrjLbAuun9KlAfQ==
+      - SPRING_PROFILES_ACTIVE=dev
+networks:
+  product-watcher-network:
+    driver: bridge
+volumes:
+  postgres_data:

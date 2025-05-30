@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: product-watcher
+  jwt:
+    secret: ${JWT_SECRET}
+    accessTokenExpiration: 86400 # 24h
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE}
+server:
+  port: 8080
