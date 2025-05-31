@@ -33,9 +33,7 @@ public class AuthControllerTest extends AbstractIntegrationTest {
         registerTestUser();
 
         LoginRequest loginRequest = new LoginRequest(EMAIL, PASSWORD);
-        ResultActions resultActions = performPostRequest(Paths.Auth.LOGIN, loginRequest);
-
-        resultActions
+        performPostRequest(Paths.Auth.LOGIN, loginRequest)
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.token", notNullValue()));
     }
@@ -47,8 +45,7 @@ public class AuthControllerTest extends AbstractIntegrationTest {
         request.setFullName(FULL_NAME);
         request.setPassword(PASSWORD);
 
-        ResultActions resultActions = performPostRequest(Paths.Auth.REGISTER, request);
-        resultActions
+        performPostRequest(Paths.Auth.REGISTER, request)
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.email").value(ErrorConstant.E_EMAIL_REQUIRED));
 
