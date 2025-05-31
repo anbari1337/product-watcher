@@ -6,7 +6,6 @@ import com.imedia24.productWatcher.dtos.LoginRequest;
 import com.imedia24.productWatcher.dtos.RegisterUserRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.web.servlet.ResultActions;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
