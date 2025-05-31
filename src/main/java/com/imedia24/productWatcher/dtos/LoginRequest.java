@@ -3,8 +3,10 @@ package com.imedia24.productWatcher.dtos;
 import com.imedia24.productWatcher.core.constant.ErrorConstant;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
+@AllArgsConstructor
 @Data
 public class LoginRequest {
     @NotBlank(message = ErrorConstant.E_EMAIL_REQUIRED)

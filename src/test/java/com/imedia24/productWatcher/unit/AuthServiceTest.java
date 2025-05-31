@@ -39,10 +39,7 @@ public class AuthServiceTest {
     @DisplayName("Should create a new user successfully")
     void shouldRegisterUserWhenEmailIsNotAlreadyUsed() throws ControllerException {
         // Arrange
-        RegisterUserRequest request = new RegisterUserRequest();
-        request.setEmail(MOCK_EMAIL);
-        request.setFullName(MOCK_NAME);
-        request.setPassword(RAW_PASSWORD);
+        RegisterUserRequest request = new RegisterUserRequest(MOCK_NAME, MOCK_EMAIL, ENCODED_PASSWORD);
 
         when(userRepository.findByEmail(MOCK_EMAIL)).thenReturn(Optional.empty());
         when(passwordEncoder.encode(RAW_PASSWORD)).thenReturn(ENCODED_PASSWORD);
@@ -67,10 +64,7 @@ public class AuthServiceTest {
     @DisplayName("Should throw an exception if email already exist")
     void shouldThrowExceptionWhenRegisteringWithExistingEmail() {
         // Arrange
-        RegisterUserRequest request = new RegisterUserRequest();
-        request.setEmail(MOCK_EMAIL);
-        request.setFullName(MOCK_NAME);
-        request.setPassword(RAW_PASSWORD);
+        RegisterUserRequest request = new RegisterUserRequest(MOCK_NAME, MOCK_EMAIL, ENCODED_PASSWORD);
 
         User existingUser = new User();
         existingUser.setEmail(MOCK_EMAIL);
