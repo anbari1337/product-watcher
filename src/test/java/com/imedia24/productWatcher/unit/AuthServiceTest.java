@@ -31,7 +31,7 @@ public class AuthServiceTest {
     private PasswordEncoder passwordEncoder;
 
     public static final String MOCK_EMAIL = "amine@gmail.com";
-    public static final String MOCK_NAME = "Amine A.";
+    public static final String MOCK_NAME = "Amine Anbari";
     public static final String RAW_PASSWORD = "password123";
     public static final String ENCODED_PASSWORD = "encoded_password";
 
@@ -39,7 +39,7 @@ public class AuthServiceTest {
     @DisplayName("Should create a new user successfully")
     void shouldRegisterUserWhenEmailIsNotAlreadyUsed() throws ControllerException {
         // Arrange
-        RegisterUserRequest request = new RegisterUserRequest(MOCK_NAME, MOCK_EMAIL, ENCODED_PASSWORD);
+        RegisterUserRequest request = new RegisterUserRequest(MOCK_NAME, MOCK_EMAIL, RAW_PASSWORD);
 
         when(userRepository.findByEmail(MOCK_EMAIL)).thenReturn(Optional.empty());
         when(passwordEncoder.encode(RAW_PASSWORD)).thenReturn(ENCODED_PASSWORD);
