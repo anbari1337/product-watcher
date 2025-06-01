@@ -15,9 +15,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AuthControllerTest extends AbstractIntegrationTest {
 
 
-    private final static String FULL_NAME = "Amine Anbari";
-    private final static String EMAIL = "amine@gmail.com";
-    private final static String PASSWORD = "password1.";
+    private final String FULL_NAME = "Amine Anbari";
+    private final String EMAIL = "amine@gmail.com";
+    private final String PASSWORD = "password1.";
 
 
     @Test
